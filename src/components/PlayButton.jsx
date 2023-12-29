@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import Animation from "./Animation"
 import '../styles/PlayButton.css'
 
 const PlayButton = () => {
@@ -16,11 +17,14 @@ const PlayButton = () => {
     }, [])
 
     return (
-        <div class={`box ${minimizePlayButton ? 'minimize-play-button' : ''}`}>
-            <div class="play-button">
-                <i id="playbutton--icon" class='bx bx-play'></i>
+        <>
+            <div class={`box ${minimizePlayButton ? 'minimize-play-button' : ''}`}>
+                <div class="play-button">
+                    <i id="playbutton--icon" class='bx bx-play'></i>
+                </div>
             </div>
-        </div>
+            <Animation/>
+        </>
     )
 }
 
