@@ -48,6 +48,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100vw;
 }
 
 .hidden{
@@ -56,8 +57,7 @@
 
 .icons{
   color: white;
-  font-size: 50;
-  animation: icons 0.8s linear forwards
+  animation: icons 0.8s linear forwards;
 }
 
 @keyframes icons{
@@ -65,20 +65,20 @@
     transform: scale(1);
   }
   to{
-    transform: scale(2.4) translateX(-550%);
+    transform: scale(2.4) translateX(-100%);
   }
 }
 
 .bar{
   background-color: rgb(255, 255, 255);
   height: 5px;
-  width: 100vw;
-  animation: bar 0.5s linear forwards
+  width: 40%;
+  animation: bar 0.5s linear forwards;
 }
 
 @keyframes bar{
   from{
-    width: 0px;
+    width: 0%;
   }
   to{
     width: 40%;
@@ -88,13 +88,12 @@
 .redbar{
   background-color: red;
   height: 5px;
-  width: 40%;
   animation: redBar 1s linear forwards; 
 }
 
  @keyframes redBar{
   from{
-    width: 40%;
+    width: 0%;
   }
   to{
     width: 100%;
