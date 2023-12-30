@@ -72,7 +72,7 @@
 .bar{
   background-color: rgb(255, 255, 255);
   height: 5px;
-  width: 40%;
+  width: 100vw;
   animation: bar 0.5s linear forwards
 }
 
@@ -99,4 +99,4 @@
   to{
     width: 100%;
   }
- }
+}
