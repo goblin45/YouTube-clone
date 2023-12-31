@@ -4,6 +4,7 @@ import Home from './components/Home'
 
 import {Routes, Route} from 'react-router-dom'
 import UserState from './contexts/UserState'
+import '../src/styles/build.css'
 
 function App() {
     return (
