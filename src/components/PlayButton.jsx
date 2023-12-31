@@ -18,9 +18,9 @@ const PlayButton = () => {
 
     return (
         <>
-            <div class={`box ${minimizePlayButton ? 'minimize-play-button' : ''}`}>
-                <div class="play-button">
-                    <i id="playbutton--icon" class='bx bx-play'></i>
+            <div className={`box ${minimizePlayButton ? 'minimize-play-button' : ''}`}>
+                <div className="play-button">
+                    <i id="playbutton--icon" className='bx bx-play'></i>
                 </div>
             </div>
             <Animation/>
