@@ -5,15 +5,11 @@ import {useNavigate} from 'react-router-dom'
 function Animation () {
   
     const [showAnimation, setShowAnimation ] = useState(false)
-<<<<<<< HEAD
 
     const navigate = useNavigate()
 
 
 
-=======
-    
->>>>>>> 186ec7358a0b58e7256448dc43b858dc8067fd5e
     useEffect(() => {
         const timeOut = setTimeout(()=>{
             setShowAnimation(true)
