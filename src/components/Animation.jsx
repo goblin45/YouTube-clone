@@ -7,9 +7,7 @@ function Animation () {
     const [showAnimation, setShowAnimation ] = useState(false)
 
     const navigate = useNavigate()
-
-
-
+    
     useEffect(() => {
         const timeOut = setTimeout(()=>{
             setShowAnimation(true)
