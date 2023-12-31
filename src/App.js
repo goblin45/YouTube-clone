@@ -4,16 +4,19 @@ import Home from './components/Home'
 
 import {UserContext} from './contexts/UserState'
 
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useState } from 'react'
 import {Routes, Route} from 'react-router-dom'
 
 function App() {
 
-	const userContext = useContext(UserContext)
+	const userContext = useContext(UserContext) 
+    const [colorReloadingBool, setColorReloadingBool] = useState(true)
     useEffect(() => {
-		
-		console.log(userContext.user, userContext.colorTheme)
-    }, [])
+        userContext.loadTheme()
+        if (userContext.colorTheme.scheme === '') {
+            setColorReloadingBool(!colorReloadingBool)
+        }
+    }, [colorReloadingBool])
 
     return (
 		<div className='App'>
