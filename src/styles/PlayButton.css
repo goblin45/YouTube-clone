@@ -88,7 +88,7 @@
 .redbar{
   background-color: red;
   height: 5px;
-  animation: redBar 1s linear forwards; 
+  animation: redBar 0.7s linear forwards; 
 }
 
  @keyframes redBar{

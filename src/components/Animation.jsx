@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react'
 import '../styles/PlayButton.css'
+import {useNavigate} from 'react-router-dom'
 
 function Animation () {
   
     const [showAnimation, setShowAnimation ] = useState(false)
-    const [activateBarAnimation , setActivateBarAnimation] = useState(false)
-    
+
+    const navigate = useNavigate()
+
+
+
     useEffect(() => {
         const timeOut = setTimeout(()=>{
             setShowAnimation(true)
@@ -13,7 +17,13 @@ function Animation () {
         return ()=>{
             clearTimeout(timeOut)
         }
-    }, []);
+    }, [])
+
+    useEffect(()=>{
+        setTimeout(()=>{
+            navigate('/home')
+        }, 1200)
+    })
     
     return (
         <>
