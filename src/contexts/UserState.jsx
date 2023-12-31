@@ -31,55 +31,34 @@ export const UserState = (props) => {
         bgColor: 'white'
     }
     const darkColorData = {
-        scheme:'dark',
+        scheme: 'dark',
         color: 'white',
         bgColor: 'black'
     }
     const systemColorData = {
         scheme: 'system' 
     }
-    const [ colorTheme, setColorTheme ] = useState(localStorage.getItem('colorTheme'))
+    const [ colorTheme, setColorTheme ] = useState({ scheme: '', color: '', bgColor: ''})
     const updateColorTheme = (theme) => {
         if (theme === 'dark') {
-            setColorTheme({
-                scheme: darkColorData.scheme,
-                color: darkColorData.color,
-                bgColor: darkColorData.bgColor
-            })
+            setColorTheme(darkColorData)
         } else if (theme === 'light') {
-            setColorTheme({
-                scheme: lightColorData.scheme,
-                color: lightColorData.color,
-                bgColor: lightColorData.bgColor
-            }) 
+            setColorTheme(lightColorData) 
         } else {
-            setColorTheme({
-                scheme: systemColorData.scheme
-            })
+            setColorTheme(systemColorData)
         }   
-        localStorage.setItem('colorTheme', theme)
     }
     const loadTheme = () => {
         const savedTheme = localStorage.getItem('colorTheme')
         if (savedTheme === null) {
-            console.log('check')
             const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
             if (!darkMode) {
-                console.log('check 1')
                 updateColorTheme('light')
             } else {
-                console.log('check 2')
                 updateColorTheme('dark')
-                console.log('from context: ', colorTheme)
             }
         } else { 
-            if (savedTheme === 'light') {
-                updateColorTheme('')
-            } else if (savedTheme === 'dark') {
-                updateColorTheme(darkColorData)
-            } else {
-                updateColorTheme(systemColorData)
-            }
+            updateColorTheme(savedTheme)
         }
     }
     return (

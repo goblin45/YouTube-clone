@@ -7,7 +7,6 @@ const NavBar = () => {
     const [ theme, setTheme ] = useState({})
     useEffect(() => {
         setTheme(userContext.colorTheme)
-        console.log(theme)
     }, [userContext.colorTheme])
     
     return (
