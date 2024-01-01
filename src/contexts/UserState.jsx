@@ -18,7 +18,7 @@ export const UserState = (props) => {
             avatar: localStorage.getItem('avatar')
         })
     }
-    const updateUser = (user) => {
+    const updateUser = () => {
         localStorage.setItem('id', user.id)
         localStorage.setItem('username', user.username)
         localStorage.setItem('e_mail', user.e_mail)
