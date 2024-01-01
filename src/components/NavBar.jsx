@@ -8,6 +8,9 @@ const NavBar = () => {
     useEffect(() => {
         setTheme(userContext.colorTheme)
     }, [userContext.colorTheme])
+
+
+    
     
     return (
 		<>
