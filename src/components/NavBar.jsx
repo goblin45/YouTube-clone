@@ -8,14 +8,18 @@ const NavBar = () => {
     useEffect(() => {
         setTheme(userContext.colorTheme)
     }, [userContext.colorTheme])
+
     
     return (
 		<>
-			<nav className='w-screen h-[55px] bg-slate-600 flex items-center px-4 py-1 md:px-5'>
-                <div className='py-auto'>
-                    <a href="" className='text-white text-[25px] p-8'>&#9776;</a>
+			<nav className='w-screen h-[60px] flex flex-row items-center px-4 py-1 md:px-5 justify-between'>
+                <div className="flex flex-row items-center ">
+                <div className='py-[15px] mx-[10px] '>
+                    <div className="flex h-[1px] bg-white w-[20px] "></div>
+                    <div className="flex h-[1px] bg-white w-[20px] mt-[5.5px]"></div>
+                    <div className="flex h-[1px] bg-white w-[20px] mt-[5px]"></div>
                 </div>
-                <div className='h-8 py-auto'>
+                <div className='h-[31px] py-[4px] px-5'>
                     <svg xmlns="http://www.w3.org/2000/svg" className="external-icon" viewBox="0 0 90 20" focusable="false" style={{
                             pointerEvents: 'none', 
                             display: 'block',
@@ -42,27 +46,69 @@ const NavBar = () => {
                     </svg>
                     
                 </div>
-                <div className='my-auto flex flex-row bg-slate-300 w-[49%] h-11 overflow-hidden'>
+                </div>
+                <div className='my-auto flex flex-row w-[49%] h-[45px]'>
 
-                    <input className='rounded-[50px] rounded-r-none p-[9px] w-[80%] ' type="text" placeholder='Search' />
+                    <input className='rounded-[50px] rounded-r-none p-[20px] w-[80%] bg-transparent border-solid border-[1px] border-stone-700 border-r-0 ml-[10px] outline-none
+                    focus:border-blue-700 
+                    ' type="text" placeholder='Search' />
 
-                    <button className=' rounded-r-[50px] bg-slate-600 shrink-0 outline-none w-[68px]' >
-                        <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style={{
+                    <button className=' rounded-r-[50px] bg-zinc-800 shrink-0 outline-none w-[68px] border-solid border-[1px] border-stone-700 ' >
+                        <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        enableBackground="new 0 0 24 24" 
+                        height="24" viewBox="0 0 24 24" 
+                        width="24" 
+                        focusable="false" 
+                        style={{
                             pointerEvents: 'none', 
                             display: 'block', 
                             width: '100%', 
-                            height: '70%',
-                            
-
+                            height: '60%',
                         }}>
-                            <path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z fill={}"></path>
+                            <path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill={theme.color}></path>
                         </svg>
                         
                     </button>
-                    <button>
-                        <i class='bx bxs-microphone'></i>
+                    <button className="w-[43px] mx-[auto] bg-neutral-800 rounded-[55%] p-[12px] hover:bg-neutral-700">
+                        <i className='bx bxs-microphone text-white text-[20px]  '></i>
                     </button>
                 </div>
+                <div className="flex flex-row items-center h-[29px] gap-6 mr-[30px]">
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        height="24" 
+                        style={{
+                            pointerEvents: "none", 
+                            display: "block", 
+                            width: "100%", 
+                            height: "90%"
+                        }} 
+                        viewBox="0 0 24 24" 
+                        width="24" 
+                        focusable="false"
+                    >
+                        <path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-6.39l4 1.83V8.56l-4 1.83V6m1-1v3.83L22 7v8l-4-1.83V19H2V5h16z" fill={theme.color}></path>
+                    </svg>
+                    <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    enable-background="new 0 0 24 24" 
+                    height="24" viewBox="0 0 24 24" 
+                    width="24" focusable="false" 
+                    style={{
+                        pointerEvents: "none", 
+                        display: "block", 
+                        width: "100%", 
+                        height: "90%"
+                    }}
+                    >
+                        <path d="M10 20h4c0 1.1-.9 2-2 2s-2-.9-2-2zm10-2.65V19H4v-1.65l2-1.88v-5.15C6 7.4 7.56 5.1 10 4.34v-.38c0-1.42 1.49-2.5 2.99-1.76.65.32 1.01 1.03 1.01 1.76v.39c2.44.75 4 3.06 4 5.98v5.15l2 1.87zm-1 .42-2-1.88v-5.47c0-2.47-1.19-4.36-3.13-5.1-1.26-.53-2.64-.5-3.84.03C8.15 6.11 7 7.99 7 10.42v5.47l-2 1.88V18h14v-.23z" fill={theme.color}></path>
+                    </svg>
+                    <div className="bg-slate-400 p-2 rounded-[50%] ">
+                        <p className="text-white px-[7px]">G</p>
+                    </div>
+                </div>
+            
 			</nav>
 		</>
 	)
