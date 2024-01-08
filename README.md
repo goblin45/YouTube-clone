@@ -12,4 +12,4 @@ The build is currently under development.
 
 👨🏻‍💻 **Arijit Biswas:** <u>[**Arijit15122002**](https://github.com/Arijit15122002)</u>
 
-Commit 1 for maintaining streak as i have no lappy with me in the north bengal tour.
+Commit 2 for maintaining streak as i have no lappy with me in the north bengal tour.
