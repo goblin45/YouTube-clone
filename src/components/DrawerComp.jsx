@@ -1,6 +1,7 @@
 import React from 'react'
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../contexts/UserState"
+import '../styles/DrawerComp.css'
 
 const navFirstOptions = [
   { title: 'Home', icon: <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" 
@@ -52,6 +53,20 @@ const navSecondOptions = [
     display: 'block',
     width: '27px', 
     height: '27px'}}><path d="M14.97 16.95 10 13.87V7h2v5.76l4.03 2.49-1.06 1.7zM12 3c-4.96 0-9 4.04-9 9s4.04 9 9 9 9-4.04 9-9-4.04-9-9-9m0-1c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z" fill='white'></path></svg>}
+]
+
+
+const navSecondOptionsSignedOut = [
+  {title: 'You', icon: <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style={{
+    pointerEvents: 'none',
+    display: 'block',
+    width: '27px', 
+    height: '27px'}}><path d="m11 7 6 3.5-6 3.5V7zm7 13H4V6H3v15h15v-1zm3-2H6V3h15v15zM7 17h13V4H7v13z" fill='white'></path></svg>},
+  {title: 'History', icon: <svg xmlns="http://www.w3.org/2000/svg" height="24" style={{
+    pointerEvents: 'none',
+    display: 'block',
+    width: '27px', 
+    height: '27px'}} viewBox="0 0 24 24" width="24" focusable="false"><g><path d="M14.97 16.95 10 13.87V7h2v5.76l4.03 2.49-1.06 1.7zM22 12c0 5.51-4.49 10-10 10S2 17.51 2 12h1c0 4.96 4.04 9 9 9s9-4.04 9-9-4.04-9-9-9C8.81 3 5.92 4.64 4.28 7.38c-.11.18-.22.37-.31.56L3.94 8H8v1H1.96V3h1v4.74c.04-.09.07-.17.11-.25.11-.22.23-.42.35-.63C5.22 3.86 8.51 2 12 2c5.51 0 10 4.49 10 10z" fill='white'></path></g></svg>}
 ]
 
 
@@ -126,6 +141,49 @@ const exploreOptions = [
 
 
 
+const moreOptions = [
+  {icon:<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" style={{pointerEvents: 'none', display: 'block', width: '28px', height: '28px'}}>
+  <defs>
+    <radialGradient cx="5.4%" cy="7.11%" r="107.93%" fx="5.4%" fy="7.11%" gradientTransform="matrix(.70653 0 0 1 .016 0)">
+      <stop offset="0%" stop-color="#FFF"></stop>
+      <stop offset="100%" stop-color="#FFF" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path d="M1 1h21.77v22H1z"></path>
+    <g fill-rule="nonzero">
+      <path fill="#F00" d="M22.54 7.6s-.2-1.5-.86-2.17c-.83-.87-1.75-.88-2.18-.93-3.04-.22-7.6-.2-7.6-.2s-4.56-.02-7.6.2c-.43.05-1.35.06-2.18.93-.65.67-.86 2.18-.86 2.18S1.04 9.4 1 11.18v1.66c.04 1.78.26 3.55.26 3.55s.2 1.5.86 2.18c.83.87 1.9.84 2.4.94 1.7.15 7.2.2 7.38.2 0 0 4.57 0 7.6-.22.43-.05 1.35-.06 2.18-.93.65-.67.86-2.18.86-2.18s.22-1.77.24-3.55v-1.66c-.02-1.78-.24-3.55-.24-3.55z"></path>
+      <path fill="#FAFAFA" d="M9.68 8.9v6.18l5.84-3.1"></path>
+      <path fill="#000" fill-opacity=".12" d="M9.68 8.88l5.13 3.48.73-.38"></path>
+      <path fill="#FFF" fill-opacity=".2" d="M22.54 7.6s-.2-1.5-.86-2.17c-.83-.87-1.75-.88-2.18-.93-3.04-.22-7.6-.2-7.6-.2s-4.56-.02-7.6.2c-.43.05-1.35.06-2.18.93-.65.67-.86 2.18-.86 2.18S1.04 9.4 1 11.18v.1c.04-1.76.26-3.54.26-3.54s.2-1.5.86-2.17c.83-.88 1.75-.88 2.18-.93 3.04-.22 7.6-.2 7.6-.2s4.56-.02 7.6.2c.43.05 1.35.05 2.18.93.65.66.86 2.17.86 2.17s.22 1.78.23 3.55v-.1c0-1.8-.23-3.56-.23-3.56z"></path>
+      <path fill="#3E2723" fill-opacity=".2" d="M22.54 16.4s-.2 1.5-.86 2.17c-.83.87-1.75.88-2.18.93-3.04.22-7.6.2-7.6.2s-4.56.02-7.6-.2c-.43-.05-1.35-.06-2.18-.93-.65-.67-.86-2.18-.86-2.18s-.22-1.8-.26-3.57v-.1c.04 1.76.26 3.54.26 3.54s.2 1.5.86 2.17c.83.88 1.75.88 2.18.93 3.04.22 7.6.2 7.6.2s4.56.02 7.6-.2c.43-.05 1.35-.05 2.18-.93.65-.66.86-2.17.86-2.17s.22-1.78.23-3.55v.1c0 1.8-.23 3.56-.23 3.56z"></path>
+      <path fill="#FFF" fill-opacity=".2" d="M9.68 15.08v.1l5.84-3.08v-.12"></path>
+      <path fill="#3E2723" fill-opacity=".2" d="M9.68 8.9v-.13l5.84 3.1v.1"></path>
+      <path fill="url(#youtube_round__a)" fill-opacity=".1" d="M21.54 3.4s-.2-1.5-.86-2.18C19.85.35 18.93.35 18.5.3 15.46.07 10.9.1 10.9.1S6.34.07 3.3.3c-.43.05-1.35.05-2.18.92C.47 1.9.26 3.4.26 3.4S.04 5.17 0 6.95V8.6c.04 1.8.26 3.56.26 3.56s.2 1.52.86 2.18c.83.87 1.9.85 2.4.94 1.7.16 7.2.2 7.38.2 0 0 4.57 0 7.6-.2.43-.06 1.35-.07 2.18-.94.65-.66.86-2.18.86-2.18s.22-1.77.24-3.55V6.97c-.02-1.78-.24-3.55-.24-3.55z" transform="translate(1 4.208)"></path>
+    </g>
+  </g>
+</svg> , title: 'YouTube Premium'},
+  {icon:<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" style={{pointerEvents: 'none', display: 'block', width: '28px', height: '28px'}}><path fill="red" d="M11.13 1.21c.48-.28 1.26-.28 1.74 0l8.01 4.64c.48.28.87.97.87 1.53v9.24c0 .56-.39 1.25-.87 1.53l-8.01 4.64c-.48.28-1.26.28-1.74 0l-8.01-4.64c-.48-.28-.87-.97-.87-1.53V7.38c0-.56.39-1.25.87-1.53l8.01-4.64z"></path><path fill="#fff" d="m12.71 18.98 4.9-2.83c.41-.24.64-.77.64-1.24V9.24c0-.47-.23-1-.64-1.24l-4.9-2.82c-.41-.23-1.02-.23-1.42 0L6.39 8c-.4.23-.64.77-.64 1.24v5.67c0 .47.24 1 .64 1.24l4.9 2.83c.2.12.46.18.71.18.26-.01.51-.07.71-.18z"></path><path fill="red" d="m12.32 5.73 4.89 2.83c.16.09.41.31.41.67v5.67c0 .37-.25.54-.41.64l-4.89 2.83c-.16.09-.48.09-.64 0l-4.89-2.83c-.16-.09-.41-.34-.41-.64V9.24c.02-.37.25-.58.41-.68l4.89-2.83c.08-.05.2-.07.32-.07s.24.02.32.07z"></path><path fill="#fff" d="M9.88 15.25 15.5 12 9.88 8.75z"></path></svg> , title: 'YouTube Studio'},
+  {icon:<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" style={{pointerEvents: 'none', display: 'block', width: '28px', height: '28px'}}>
+  <circle fill="#FF0000" cx="12" cy="12" r="10"></circle>
+  <polygon fill="#FFFFFF" points="10,14.65 10,9.35 15,12 "></polygon>
+  <path fill="#FFFFFF" d="M12,7c2.76,0,5,2.24,5,5s-2.24,5-5,5s-5-2.24-5-5S9.24,7,12,7 M12,6c-3.31,0-6,2.69-6,6s2.69,6,6,6s6-2.69,6-6 S15.31,6,12,6L12,6z"></path>
+</svg> , title: 'YouTube Music'},
+  {icon:<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" style={{pointerEvents: 'none', display: 'block', width: '28px', height: '28px'}}>
+  <path fill="#FF0000" d="M21.39,13.19c0-0.08,0-0.15,0-0.22c-0.01-0.86-0.5-5-0.78-5.74c-0.32-0.85-0.76-1.5-1.31-1.91 c-0.9-0.67-1.66-0.82-2.6-0.84l-0.02,0c-0.4,0-3.01,0.32-5.2,0.62C9.28,5.4,6.53,5.8,5.88,6.04c-0.9,0.33-1.62,0.77-2.19,1.33 c-1.05,1.04-1.18,2.11-1.04,3.51c0.1,1.09,0.69,5.37,1.02,6.35c0.45,1.32,1.33,2.12,2.47,2.24c0.28,0.03,0.55,0.05,0.82,0.05 c1,0,1.8-0.21,2.72-0.46c1.45-0.39,3.25-0.87,6.97-0.87l0.09,0h0.02c0.91,0,3.14-0.2,4.16-2.07C21.44,15.12,21.41,13.91,21.39,13.19 z"></path>
+  <path fill="#000" d="M21.99,13.26c0-0.08,0-0.16-0.01-0.24c-0.01-0.92-0.54-5.32-0.83-6.11c-0.34-0.91-0.81-1.59-1.4-2.03 C18.81,4.17,17.99,4.02,17,4l-0.02,0c-0.43,0-3.21,0.34-5.54,0.66c-2.33,0.32-5.25,0.75-5.95,1C4.53,6.01,3.76,6.48,3.16,7.08 c-1.12,1.1-1.25,2.25-1.11,3.74c0.11,1.16,0.73,5.71,1.08,6.75c0.48,1.41,1.41,2.25,2.63,2.38C6.06,19.98,6.34,20,6.63,20 c1.07,0,1.91-0.23,2.89-0.49c1.54-0.41,3.46-0.93,7.41-0.93l0.1,0h0.02c0.97,0,3.34-0.21,4.42-2.2 C22.04,15.32,22.01,14.03,21.99,13.26z M20.59,15.91c-0.82,1.51-2.75,1.68-3.56,1.68l-0.1,0c-4.09,0-6.07,0.53-7.67,0.96 C8.31,18.8,7.56,19,6.63,19c-0.25,0-0.5-0.01-0.76-0.04c-1.04-0.11-1.54-0.99-1.79-1.71c-0.3-0.88-0.91-5.21-1.04-6.53 C2.9,9.25,3.1,8.54,3.86,7.79c0.5-0.5,1.15-0.89,1.97-1.19c0.17-0.06,1.1-0.32,5.74-0.95C14.2,5.29,16.64,5.01,16.99,5 c0.83,0.02,1.43,0.13,2.17,0.69c0.43,0.32,0.79,0.86,1.06,1.58c0.22,0.58,0.76,4.78,0.77,5.77l0.01,0.25 C21.01,13.96,21.04,15.08,20.59,15.91z"></path>
+  <path fill="#000" d="M11.59,14.76c-0.48,0.36-0.8,0.45-1.01,0.45c-0.16,0-0.25-0.05-0.3-0.08c-0.34-0.18-0.42-0.61-0.5-1.2l-0.01-0.1 c-0.04-0.31-0.26-2.1-0.38-3.16L9.3,9.94C9.26,9.66,9.2,9.19,9.54,8.94c0.32-0.23,0.75-0.09,0.96-0.03c0.53,0.17,3.6,1.23,4.59,1.73 c0.21,0.09,0.67,0.28,0.68,0.83c0.01,0.5-0.38,0.74-0.53,0.82L11.59,14.76z"></path>
+  <path fill="#FFF" d="M10.3,9.89c0,0,0.5,4.08,0.51,4.19c0.06-0.04,3.79-2.58,3.79-2.58C13.71,11.07,11.07,10.14,10.3,9.89z"></path>
+</svg> , title: 'YouTube Kids'}
+]
+
+const lastOptions = [
+  {icon:<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style={{pointerEvents: 'none', display: 'block', width: '28px', height: '28px'}}><path d="M12 9.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5-2.5-1.12-2.5-2.5 1.12-2.5 2.5-2.5m0-1c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5zM13.22 3l.55 2.2.13.51.5.18c.61.23 1.19.56 1.72.98l.4.32.5-.14 2.17-.62 1.22 2.11-1.63 1.59-.37.36.08.51c.05.32.08.64.08.98s-.03.66-.08.98l-.08.51.37.36 1.63 1.59-1.22 2.11-2.17-.62-.5-.14-.4.32c-.53.43-1.11.76-1.72.98l-.5.18-.13.51-.55 2.24h-2.44l-.55-2.2-.13-.51-.5-.18c-.6-.23-1.18-.56-1.72-.99l-.4-.32-.5.14-2.17.62-1.21-2.12 1.63-1.59.37-.36-.08-.51c-.05-.32-.08-.65-.08-.98s.03-.66.08-.98l.08-.51-.37-.36L3.6 8.56l1.22-2.11 2.17.62.5.14.4-.32c.53-.44 1.11-.77 1.72-.99l.5-.18.13-.51.54-2.21h2.44M14 2h-4l-.74 2.96c-.73.27-1.4.66-2 1.14l-2.92-.83-2 3.46 2.19 2.13c-.06.37-.09.75-.09 1.14s.03.77.09 1.14l-2.19 2.13 2 3.46 2.92-.83c.6.48 1.27.87 2 1.14L10 22h4l.74-2.96c.73-.27 1.4-.66 2-1.14l2.92.83 2-3.46-2.19-2.13c.06-.37.09-.75.09-1.14s-.03-.77-.09-1.14l2.19-2.13-2-3.46-2.92.83c-.6-.48-1.27-.87-2-1.14L14 2z" fill='white'></path></svg> , title: 'Settings'},
+  {icon: <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style={{pointerEvents: 'none', display: 'block', width: '28px', height: '28px'}}><path d="m13.18 4 .24 1.2.16.8H19v7h-5.18l-.24-1.2-.16-.8H6V4h7.18M14 3H5v18h1v-9h6.6l.4 2h7V5h-5.6L14 3z" fill='white'></path></svg>, title: 'Report history'},
+  {icon: <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style={{pointerEvents: 'none', display: 'block', width: '28px', height: '28px'}}><path d="M15.36 9.96c0 1.09-.67 1.67-1.31 2.24-.53.47-1.03.9-1.16 1.6l-.04.2H11.1l.03-.28c.14-1.17.8-1.76 1.47-2.27.52-.4 1.01-.77 1.01-1.49 0-.51-.23-.97-.63-1.29-.4-.31-.92-.42-1.42-.29-.59.15-1.05.67-1.19 1.34l-.05.28H8.57l.06-.42c.2-1.4 1.15-2.53 2.42-2.87 1.05-.29 2.14-.08 2.98.57.85.64 1.33 1.62 1.33 2.68zM12 18c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm0-15c-4.96 0-9 4.04-9 9s4.04 9 9 9 9-4.04 9-9-4.04-9-9-9m0-1c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z" fill='white'></path></svg>, title: 'Help'},
+  {icon: <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style={{pointerEvents: 'none', display: 'block', width: '28px', height: '28px'}}><path d="M13 14h-2v-2h2v2zm0-9h-2v6h2V5zm6-2H5v16.59l3.29-3.29.3-.3H19V3m1-1v15H9l-5 5V2h16z" fill='white'></path></svg>, title: 'Send feedback'}
+]
+
 
 
 
@@ -144,8 +202,8 @@ function DrawerComp () {
 
   return(
     <>
-      <div className='flex flex-row overflow-auto'>
-        <div id='scroll' className='flex flex-col w-[230px] mt-[10px] p-[10px] cursor-pointer overflow-y-auto' style={{ backgroundColor: "rgb(15, 15, 15)"}}>
+      <div className='flex flex-row h-[calc(100vh-100px)]'>
+        <div id='scroll' className='flex flex-col w-[260px] mt-[8px] p-[9px] cursor-pointer overflow-x-clip overflow-y-auto h-full' style={{ backgroundColor: "rgb(15, 15, 15)"}}>
           {
           navFirstOptions.map((option) => 
           <div key={option.title} className='text-white color flex flex-row items-center w-[220px] hover:bg-neutral-800 hover:rounded-xl'> 
@@ -154,16 +212,20 @@ function DrawerComp () {
           </div>)
           }
 
-          <div className=' h-[0.5px] w-[226px] mx-[2px] my-[14px] ' style={{ backgroundColor: 'rgb(64, 64, 64)'}}></div>
+          <div className=' h-[0.5px] w-[240px] mx-[1px] my-[14px] p-[0.4px]' style={{ backgroundColor: 'rgb(64, 64, 64)'}}></div>
 
-          <div className='flex flex-row items-center mx-2 my-[1px] px-3 hover:bg-neutral-800 hover:rounded-xl '><p className='text-white text-lg font-semibold'>You</p><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16" width="16" focusable="false" style={{pointerEvents: 'none', 
+          
+
+          {isSignedIn ? 
+            <>
+            <div className='flex flex-row items-center mx-2 my-[1px] px-3 py-2 hover:bg-neutral-800 hover:rounded-xl '><p className='text-white text-lg font-semibold'>You</p><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16" width="16" focusable="false" style={{pointerEvents: 'none', 
           display: 'block', 
           width: '17px', 
           height: '17px',
           fontWeight: 'lighter'}}
           className='mx-2 mt-[2px]'>
           <path d="M4.97 12.65 9.62 8 4.97 3.35l.71-.71L11.03 8l-5.35 5.35-.71-.7z" fill='white'></path></svg></div>
-          {
+            {
             navSecondOptions.map((option) => 
           <div key={option.title} className='text-white color flex flex-row items-center w-[220px] hover:bg-neutral-800 hover:rounded-xl'> 
             <div className='mx-6 my-[9px]'>{option.icon}</div>
@@ -171,7 +233,7 @@ function DrawerComp () {
           </div>)
           }
 
-          <div  onClick={() => setShowMore(!showMore)}>
+          <div  onClick = {() => setShowMore(!showMore)}>
           {
             showMore 
               && 
@@ -219,15 +281,26 @@ function DrawerComp () {
             <div className='text-white '>{showMore ? "Show Less" : "Show More"}</div>
             </div>
           </div>
+            </> :
+            <>
+            {
+            navSecondOptionsSignedOut.map((option) => 
+          <div key={option.title} className='text-white color flex flex-row items-center w-[220px] hover:bg-neutral-800 hover:rounded-xl'> 
+            <div className='mx-6 my-[9px]'>{option.icon}</div>
+            <div className=''>{option.title}</div>
+          </div>)
+          }
+            </>
+          }
 
-          <div className=' h-[0.5px] w-[226px] mx-[2px] my-[14px] ' style={{ backgroundColor: 'rgb(64, 64, 64)'}}></div>
+          <div className=' h-[0.5px] w-[240px] mx-[1px] my-[14px] p-[0.4px]' style={{ backgroundColor: 'rgb(64, 64, 64)'}}></div>
 
           {isSignedIn ? 
           <div className='text-white mx-4 text-lg font-semibold'>Subscritopns</div> : 
           <div>
           <div className='text-white mx-6 w-[180px] cursor-text'> Sign in to like videos, comment, and subscribe</div>
           <div className='mx-6 my-5'>
-          <button className="rounded-full border-[1px] border-solid border-stone-700 w-[110px] flex flex-row items-center gap-3 p-2">
+          <button className="rounded-full border-[1px] border-solid border-stone-700 w-[110px] flex flex-row items-center gap-3 p-2 mb-[-1em]">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="25px" height="25px"
                     style={{
                         border: '1px solid rgb(14, 156, 227)',
@@ -237,11 +310,13 @@ function DrawerComp () {
                     >
                         <path d="M 16 4 C 12.144531 4 9 7.144531 9 11 C 9 13.394531 10.21875 15.519531 12.0625 16.78125 C 8.484375 18.304688 6 21.859375 6 26 L 8 26 C 8 21.535156 11.535156 18 16 18 C 20.464844 18 24 21.535156 24 26 L 26 26 C 26 21.859375 23.515625 18.304688 19.9375 16.78125 C 21.78125 15.519531 23 13.394531 23 11 C 23 7.144531 19.855469 4 16 4 Z M 16 6 C 18.773438 6 21 8.226563 21 11 C 21 13.773438 18.773438 16 16 16 C 13.226563 16 11 13.773438 11 11 C 11 8.226563 13.226563 6 16 6 Z" fill="rgb(14, 156, 227)" />
                         </svg>
-                        <p className="text-sky-500 font-semibold text-[16px] items-center mt-[-4px]">Sign in</p>
+                        <p className="text-sky-500 font-semibold text-[16px] items-center mt-[-4px] ">Sign in</p>
                     </button>
           </div>
           </div>
           }
+
+          <div className=' h-[0.5px] w-[240px] mx-[1px] my-[14px] p-[0.4px]' style={{ backgroundColor: 'rgb(64, 64, 64)'}}></div>
 
           <div className='text-white text-lg font-semibold mx-4 cursor-text'>Explore</div>
 
@@ -253,9 +328,42 @@ function DrawerComp () {
           </div>)
           }
 
+          <div className=' h-[0.5px] w-[226px] mx-[2px] my-[14px] p-[0.4px]' style={{ backgroundColor: 'rgb(64, 64, 64)'}}></div>
 
+          <div className='text-white text-lg font-semibold mx-4 cursor-text'>More from YouTube</div>
           
+          {
+            moreOptions.map((option) => 
+          <div key={option.title} className='text-white color flex flex-row items-center w-[220px] hover:bg-neutral-800 hover:rounded-xl'> 
+            <div className='mx-6 my-[9px]'>{option.icon}</div>
+            <div className=''>{option.title}</div>
+          </div>)
+          }
+
+          <div className=' h-[0.5px] w-[226px] mx-[2px] my-[14px] p-[0.4px]' style={{ backgroundColor: 'rgb(64, 64, 64)'}}></div>
+
+          {
+            lastOptions.map((option) => 
+          <div key={option.title} className='text-white color flex flex-row items-center w-[220px] hover:bg-neutral-800 hover:rounded-xl'> 
+            <div className='mx-6 my-[9px]'>{option.icon}</div>
+            <div className=''>{option.title}</div>
+          </div>)
+          }
+
+          <div className=' h-[0.5px] w-[226px] mx-[2px] my-[14px] p-[0.4px]'style={{ backgroundColor: 'rgb(64, 64, 64)'}}></div>
+
+          <a href="">
+            <pre style={{fontSize: '13px', color: 'rgb(171, 171, 171)', fontFamily: 'sans-serif'}} className='px-5 py-2'> 
+              About  Press  Copyright <br />
+              Contact us Creator  Advertise <br />
+              Developers <br /> <br />
+              Terms Privacy Policy & Safety <br />
+              How YouTube works <br />
+              Test new features <br />
+            </pre>
+          </a>
           
+
         </div>   
       </div>
     </>
