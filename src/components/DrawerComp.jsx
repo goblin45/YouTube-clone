@@ -191,7 +191,7 @@ const lastOptions = [
 function DrawerComp () {
   const [showMore, setShowMore] = useState(false);
 
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(true);
 
   const userContext = useContext(UserContext)
     const [ theme, setTheme ] = useState({})
@@ -203,7 +203,7 @@ function DrawerComp () {
   return(
     <>
       <div className='flex flex-row h-[calc(100vh-100px)]'>
-        <div id='scroll' className='flex flex-col w-[260px] mt-[8px] p-[9px] cursor-pointer overflow-x-clip overflow-y-auto h-full' style={{ backgroundColor: "rgb(15, 15, 15)"}}>
+        <div id='scroll' className='flex flex-col w-[260px] mt-[2px] p-[9px] cursor-pointer overflow-x-clip overflow-y-auto h-full' style={{ backgroundColor: "rgb(15, 15, 15)"}}>
           {
           navFirstOptions.map((option) => 
           <div key={option.title} className='text-white color flex flex-row items-center w-[220px] hover:bg-neutral-800 hover:rounded-xl'> 
@@ -216,7 +216,7 @@ function DrawerComp () {
 
           
 
-          {isSignedIn ? 
+          {userContext.loggedIn ? 
             <>
             <div className='flex flex-row items-center mx-2 my-[1px] px-3 py-2 hover:bg-neutral-800 hover:rounded-xl '><p className='text-white text-lg font-semibold'>You</p><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16" width="16" focusable="false" style={{pointerEvents: 'none', 
           display: 'block', 
@@ -228,7 +228,7 @@ function DrawerComp () {
             {
             navSecondOptions.map((option) => 
           <div key={option.title} className='text-white color flex flex-row items-center w-[220px] hover:bg-neutral-800 hover:rounded-xl'> 
-            <div className='mx-6 my-[9px]'>{option.icon}</div>
+            <div className='mx-6 my-[7px]'>{option.icon}</div>
             <div className=''>{option.title}</div>
           </div>)
           }
@@ -244,7 +244,7 @@ function DrawerComp () {
                 display: 'block',
                 width: '27px', 
                 height: '27px'}}
-                className='mx-6 my-[9px]'><path d="M18.77,11h-4.23l1.52-4.94C16.38,5.03,15.54,4,14.38,4c-0.58,0-1.14,0.24-1.52,0.65L7,11H3v10h4h1h9.43 c1.06,0,1.98-0.67,2.19-1.61l1.34-6C21.23,12.15,20.18,11,18.77,11z M7,20H4v-8h3V20z M19.98,13.17l-1.34,6 C18.54,19.65,18.03,20,17.43,20H8v-8.61l5.6-6.06C13.79,5.12,14.08,5,14.38,5c0.26,0,0.5,0.11,0.63,0.3 c0.07,0.1,0.15,0.26,0.09,0.47l-1.52,4.94L13.18,12h1.35h4.23c0.41,0,0.8,0.17,1.03,0.46C19.92,12.61,20.05,12.86,19.98,13.17z" fill='white'></path></svg></div>
+                className='mx-6 my-[9px]'><path d="M18.77,11h-4.23l1.52-4.94C16.38,5.03,15.54,4,14.38,4c-0.58,0-1.14,0.24-1.52,0.65L7,11H3v10h4h1h9.43 c1.06,0,1.98-0.67,2.19-1.61l1.34-6C21.23,12.15,20.18,11,18.77,11z M7,20H4v-8h3V20z M19.98,13.17l-1.34,6 C18.54,19.65,18.03,20,17.43,20H8v-8.61l5.6-6.06C13.79,5.12,14.08,5,14.38,5c0.26,0,0.5,0.11,0.63,0.3 c0.07,0.1,0.15,0.26,0.09,0.47l-1.52,4.94L13.18,12h1.35h4.23c0.41,0,0.8,0.17,1.03,0.46C19.92,12.61,20.05,12.86,19.98,13.17z" fill={theme.color}></path></svg></div>
                 <div>Liked Videos</div>
             </div>
             <div className='text-white color flex flex-row items-center w-[220px] hover:bg-neutral-800 hover:rounded-xl'>
@@ -253,7 +253,7 @@ function DrawerComp () {
                   display: 'block',
                   width: '27px', 
                   height: '27px'}}
-                  className='mx-6 my-[9px]'><path d="M22 7H2v1h20V7zm-9 5H2v-1h11v1zm0 4H2v-1h11v1zm2 3v-8l7 4-7 4z" fill='white'></path></svg>
+                  className='mx-6 my-[9px]'><path d="M22 7H2v1h20V7zm-9 5H2v-1h11v1zm0 4H2v-1h11v1zm2 3v-8l7 4-7 4z" fill={theme.color}></path></svg>
               </div>
               <div>Made project</div>
             </div>
@@ -296,7 +296,7 @@ function DrawerComp () {
           <div className=' h-[0.5px] w-[240px] mx-[1px] my-[14px] p-[0.4px]' style={{ backgroundColor: 'rgb(64, 64, 64)'}}></div>
 
           {isSignedIn ? 
-          <div className='text-white mx-4 text-lg font-semibold'>Subscritopns</div> : 
+          <div className='text-white mx-4 text-lg font-semibold'>Subscriptions</div> : 
           <div>
           <div className='text-white mx-6 w-[180px] cursor-text'> Sign in to like videos, comment, and subscribe</div>
           <div className='mx-6 my-5'>
@@ -323,7 +323,7 @@ function DrawerComp () {
           {
             exploreOptions.map((option) => 
           <div key={option.title} className='text-white color flex flex-row items-center w-[220px] hover:bg-neutral-800 hover:rounded-xl'> 
-            <div className='mx-6 my-[9px]'>{option.icon}</div>
+            <div className='mx-6 my-[7px]'>{option.icon}</div>
             <div className=''>{option.title}</div>
           </div>)
           }

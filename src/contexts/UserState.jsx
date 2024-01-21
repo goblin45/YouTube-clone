@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, useEffect } from 'react'
 
 export const UserContext = createContext(null)
 
@@ -61,8 +61,31 @@ export const UserState = (props) => {
             updateColorTheme(savedTheme)
         }
     }
+    const [loggedIn, setloggedIn] = useState(false);
+
+    useEffect(() => {
+        const logIn = localStorage.getItem('logIn')
+        if(!logIn)
+        {
+            setloggedIn(false);
+        }
+        else { 
+            setloggedIn(true);
+        }
+    }, [])
+    
+    const logInUser = () => {
+        setloggedIn(true)
+        localStorage.setItem('logIn', true)
+    }
+
+    const logOutUser = () => {
+        setloggedIn(false);
+        localStorage.setItem('logIn', false)
+    }
+
     return (
-        <UserContext.Provider value={{user, loadUser, updateUser, colorTheme, loadTheme, updateColorTheme}}>
+        <UserContext.Provider value={{user, loadUser, updateUser,loggedIn, logInUser, logOutUser, colorTheme, loadTheme, updateColorTheme}}>
             {props.children}
         </UserContext.Provider> 
     )

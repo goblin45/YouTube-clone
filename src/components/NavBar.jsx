@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../contexts/UserState"
+import DrawerComp from './DrawerComp'
 
 const NavBar = () => {
 
@@ -9,12 +10,13 @@ const NavBar = () => {
         setTheme(userContext.colorTheme)
     }, [userContext.colorTheme])
 
+    const [isDrawerOpen, setIsDrawerOpen] = useState(true);
     
     return (
 		<>
 			<nav className='w-screen min-w-xl h-[60px] flex flex-row items-center px-4 py-1 md:px-5 gap-[13%]'>
                 <div className="flex flex-row items-center ">
-                <div className='py-[15px] mx-[10px] hover:bg-neutral-700 hover:rounded-full'>
+                <div className='py-4 px-[13px] hover:bg-neutral-700 hover:rounded-full cursor-pointer' onClick={ () => setIsDrawerOpen(open => !open)}>
                     <div className="flex h-[1px] bg-white w-[20px] "></div>
                     <div className="flex h-[1px] bg-white w-[20px] mt-[5.5px]"></div>
                     <div className="flex h-[1px] bg-white w-[20px] mt-[5px]"></div>
@@ -73,7 +75,10 @@ const NavBar = () => {
                         <i className='bx bxs-microphone text-white text-[20px]  '></i>
                     </button>
                 </div>
-                {/* <div className="flex flex-row items-center h-[29px] gap-6 mr-[30px]">
+
+                {userContext.loggedIn ? 
+                    <div className="flex flex-row items-center h-[29px] gap-6 mr-[30px]" 
+                >
                     <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         height="24" 
@@ -106,8 +111,10 @@ const NavBar = () => {
                     <div className="bg-slate-400 p-2 rounded-[50%] ">
                         <p className="text-white px-[7px]">G</p>
                     </div>
-                </div> */}
-                <div className=" ml-[] flex flex-row w-[140px] justify-between gap-[30px] items-center">
+                </div> : 
+                <div className=" ml-[] flex flex-row w-[140px] justify-between gap-[30px] items-center" onClick={()=>{
+                    userContext.logInUser();
+                }}>
                     <div className="">
                         <div className="bg-white h-[2.5px] w-[2px] rounded-full"></div>
                         <div className="bg-white h-[2.5px] w-[2px] rounded-full mt-[5px] "></div>
@@ -126,8 +133,21 @@ const NavBar = () => {
                         <p className="text-sky-500 font-semibold text-[16px] items-center mt-[-4px]">Sign in</p>
                     </button>
                 </div>
-            
+                }
+
+                
+
+
+
+
+                
 			</nav>
+
+            {
+                isDrawerOpen ? <DrawerComp /> : <></>
+           
+            }
+            
 		</>
 	)
 }

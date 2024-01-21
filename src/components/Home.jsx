@@ -4,9 +4,9 @@ import DrawerComp from './DrawerComp'
 
 function Home () {
 	return (
+		
 		<>
 			<NavBar/>
-			<DrawerComp/>
 		</>
 	)
 }
