@@ -1,0 +1,18 @@
+
+#suggeestionScroll::-webkit-scrollbar{
+    width: 0.1rem;
+}
+#suggeestionScroll::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+#suggeestionScroll::-webkit-scrollbar-thumb{
+    background-color: transparent;
+}
+#suggestionScroll:hover::-webkit-scrollbar-thumb{
+    background-color: transparent;
+}
+/* #suggestionScroll::-webkit-scrollbar-button:single-button:horizontal:decrement{
+    height: 10px;
+    width: 10px;
+    background-color: orange;
+} */
