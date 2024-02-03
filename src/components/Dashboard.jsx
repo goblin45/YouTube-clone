@@ -1,42 +1,49 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
-// const API_key = "AIzaSyD-q58ZlTfke8tsH6LsSpIpTnX0kTcGuJQ";
-const API_key = "AIzaSyDIla3-X_K72wxCrwCdAc1Ot8vszIYjHSo"
+const API_key = "AIzaSyD-q58ZlTfke8tsH6LsSpIpTnX0kTcGuJQ";
+// const API_key = "AIzaSyDIla3-X_K72wxCrwCdAc1Ot8vszIYjHSo"
 const videoSearchURL = `https://youtube.googleapis.com/youtube/v3/search?key=${API_key}`
 
 const channelDpURL = `https://youtube.googleapis.com/youtube/v3/channels?key=${API_key}`
 	
 
 
-function Dashboard () {
+function Dashboard() {
 
 	const [data, setData] = useState()
-
-	useEffect(() => {
-	const videoParams = new URLSearchParams({
-		part: 'snippet',
-		maxResults: '2'
-	})
-
-	// console.log(videoParams);
-
-	fetch(`${videoSearchURL}&${videoParams}`).then((res) => res.json()).then((resJson) => setData(resJson.items));
-	}, [])
+	const [channelDps, setChannelDps] = useState({})
 
 	const getChannelDp = async (channelId) => {
 		const channelParams = new URLSearchParams({
 			part: 'snippet',
 			id: `${channelId}`
 		})
-		const res = await axios.get(`${channelDpURL}&${channelParams}`).then(res => res.data)
-		// .then((data) => {
-		// 	// console.log(typeof(resJson.items[0].snippet.thumbnails.default.url))
-		// 	return data.items[0].snippet?.thumbnails.default.url.toString()
-		// });
-		console.log(res)
-		return res.items[0].snippet.thumbnails.high.url
+		const res = await axios.get(`${channelDpURL}&${channelParams}`).then(res => res.data).catch((error) => console.log(error))
+		setChannelDps((prevChannelDps) => ({
+			...prevChannelDps, 
+			[channelId]: res.items[0].snippet.thumbnails.high.url}
+		))
 	}
+
+	useEffect(async() => {
+		const videoParams = new URLSearchParams({
+			part: 'snippet',
+			maxResults: '2'
+		})
+
+		// console.log(videoParams);
+
+		await fetch(`${videoSearchURL}&${videoParams}`).then((res) => res.json()).then((resJson) => setData(resJson.items));
+	}, [])
+
+	useEffect(() => {
+		data?.map((video) => {
+			getChannelDp(video.snippet.channelId)
+		})
+	}, [data])
+
+	
 
 	return (
 		<>
@@ -50,7 +57,10 @@ function Dashboard () {
 						</div>
 						<div className='flex flex-col gap-3'>
 							<div className='object-cover w-10 h-10 rounded-full overflow-hidden flex items-center justify-center'>
-								<img src={getChannelDp(video.snippet.channelId)} alt="" className='w-full h-full'/>
+								{
+									(channelDps[video.snippet.channelId]) &&
+									<img src={channelDps[video.snippet.channelId]} alt="" className='w-full h-full'/>
+								}
 							</div>
 						
 							<div>
