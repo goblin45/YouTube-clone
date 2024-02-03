@@ -29,7 +29,7 @@ function SuggestionBar () {
         {
           suggestions.map((option) => 
             
-                <div className='text-white justify-center py-2 px-[15px] flex rounded-xl h-10 mx-1 cursor-pointer bg-neutral-800 hover:bg-neutral-700 duration-200 ease-in-out text-sm' style={{
+                <div key={option.title} className='text-white justify-center py-2 px-[15px] flex rounded-xl h-10 mx-1 cursor-pointer bg-neutral-800 hover:bg-neutral-700 duration-200 ease-in-out text-sm' style={{
                 display: 'inline-block',
                 whiteSpace: 'nowrap',
                 }}>{option.title}</div> )
