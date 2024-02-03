@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-
+import axios from 'axios'
 
 // const API_key = "AIzaSyD-q58ZlTfke8tsH6LsSpIpTnX0kTcGuJQ";
 const API_key = "AIzaSyDIla3-X_K72wxCrwCdAc1Ot8vszIYjHSo"
@@ -19,46 +19,60 @@ function Dashboard () {
 		maxResults: '2'
 	})
 
-	console.log(videoParams);
+	// console.log(videoParams);
 
 	fetch(`${videoSearchURL}&${videoParams}`).then((res) => res.json()).then((resJson) => setData(resJson.items));
 	}, [])
 
-	const getChannelDp = (channelId) => {
+	const getChannelDp = async (channelId) => {
 		const channelParams = new URLSearchParams({
 			part: 'snippet',
 			id: `${channelId}`
 		})
-		return fetch(`${channelDpURL}&${channelParams}`).then((res) => res.json()).then((resJson) => {
-			console.log(resJson.items[0].snippet.thumbnails.default.url)
-			return resJson.items[0].snippet?.thumbnails.default.url
-		});
+		const res = await axios.get(`${channelDpURL}&${channelParams}`).then(res => res.data)
+		// .then((data) => {
+		// 	// console.log(typeof(resJson.items[0].snippet.thumbnails.default.url))
+		// 	return data.items[0].snippet?.thumbnails.default.url.toString()
+		// });
+		console.log(res)
+		return res.items[0].snippet.thumbnails.high.url
 	}
 
 	return (
 		<>
-		<div className='grid grid-cols-3 gap-6 px-4 max:grid-cols-2'>
-		{
-          data?.map((video) => 
-            
-			<div key={video.id.videoId} className='text-white color flex flex-col gap-3'>
-                <div className=''><img src={video.snippet.thumbnails.high.url} alt="" className='h-56'/></div>
-                <div className='flex flex-col gap-3'>
-                  <div className='object-cover'><img src={getChannelDp(video.snippet.channelId)} alt="" className='w-16 h-10 '/></div>
-                  
-                  <div>
-				  	<div className='text-xl' style={{fontFamily: 'sans-serif',fontSize: '18px'}}>{video.snippet.title}</div>
-					<div className='text-sm font-semibold cursor-pointer text-zinc-400 hover:text-white duration-200 ease-in-out'>{video.snippet.channelTitle}</div>
-					<div className='flex felx-row gap-3 text-sm cursor-pointer ' style={{color: 'rgb(150, 150, 150)'}}>
-						<div>{video.views}</div>
-						<div>{video.time}</div>
-					</div> 
-				  </div>
-                </div>
-            </div> 
-                 )
-        }
-		</div>
+			<div className='grid grid-cols-3 gap-6 px-4 max:grid-cols-2'>
+				{
+					data?.map((video) => (
+					
+					<div key={video.id.videoId} className='text-white color flex flex-col gap-3'>
+						<div className=''>
+							<img src={video.snippet.thumbnails.high.url} alt="" className='h-56'/>
+						</div>
+						<div className='flex flex-col gap-3'>
+							<div className='object-cover w-10 h-10 rounded-full overflow-hidden flex items-center justify-center'>
+								<img src={getChannelDp(video.snippet.channelId)} alt="" className='w-full h-full'/>
+							</div>
+						
+							<div>
+								<div 
+									className='text-xl' 
+									style={{fontFamily: 'sans-serif',fontSize: '18px'}}
+								>
+									{video.snippet.title}
+								</div>
+								<div className='text-sm font-semibold cursor-pointer text-zinc-400 hover:text-white duration-200 ease-in-out'>
+									{video.snippet.channelTitle}
+								</div>
+								<div className='flex felx-row gap-3 text-sm cursor-pointer ' style={{color: 'rgb(150, 150, 150)'}}>
+									<div>{video.views}</div>
+									<div>{video.time}</div>
+								</div> 
+							</div>
+							</div>
+						</div> 
+					))
+				}
+			</div>
 		</>
 	)
 }
