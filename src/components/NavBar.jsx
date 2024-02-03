@@ -8,24 +8,27 @@ const NavBar = () => {
     useEffect(() => {
         setTheme(userContext.colorTheme)
     }, [userContext.colorTheme])
+
     
     return (
 		<>
-			<nav className='w-screen h-[55px] bg-slate-600 flex items-center px-4 py-1 md:px-5'>
-                <div className='py-auto'>
-                    <a href="" className='text-white text-[25px] p-8'>&#9776;</a>
+			<nav className='w-screen min-w-xl h-[60px] flex flex-row items-center px-4 py-1 md:px-5 gap-[13%]'>
+                <div className="flex flex-row items-center ">
+                <div className='py-[15px] mx-[10px] hover:bg-neutral-700 hover:rounded-full'>
+                    <div className="flex h-[1px] bg-white w-[20px] "></div>
+                    <div className="flex h-[1px] bg-white w-[20px] mt-[5.5px]"></div>
+                    <div className="flex h-[1px] bg-white w-[20px] mt-[5px]"></div>
                 </div>
-                <div className='h-8 py-auto'>
+                <div className='h-[31px] py-[4px] px-5'>
                     <svg xmlns="http://www.w3.org/2000/svg" className="external-icon" viewBox="0 0 90 20" focusable="false" style={{
                             pointerEvents: 'none', 
                             display: 'block',
-                            width: '100%', 
-                            height: '100%'
+                            width: '100px'
                         }}>
                             <svg viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
                                 <g>
                                 <path d="M27.9727 3.12324C27.6435 1.89323 26.6768 0.926623 25.4468 0.597366C23.2197 2.24288e-07 14.285 0 14.285 0C14.285 0 5.35042 2.24288e-07 3.12323 0.597366C1.89323 0.926623 0.926623 1.89323 0.597366 3.12324C2.24288e-07 5.35042 0 10 0 10C0 10 2.24288e-07 14.6496 0.597366 16.8768C0.926623 18.1068 1.89323 19.0734 3.12323 19.4026C5.35042 20 14.285 20 14.285 20C14.285 20 23.2197 20 25.4468 19.4026C26.6768 19.0734 27.6435 18.1068 27.9727 16.8768C28.5701 14.6496 28.5701 10 28.5701 10C28.5701 10 28.5677 5.35042 27.9727 3.12324Z" fill="#FF0000"></path>
-                                <path d="M11.4253 14.2854L18.8477 10.0004L11.4253 5.71533V14.2854Z" fill="white"></path>
+                                <path d="M11.4253 14.2854L18.8477 10.0004L11.4253 5.71533V14.2854Z" fill={theme.color}></path>
                                 </g>
                                 <g>
                                 <g>
@@ -42,19 +45,88 @@ const NavBar = () => {
                     </svg>
                     
                 </div>
-                <div className='my-auto max-w-xl'>
-                    <input className='rounded-[50px] rounded-r-none pl-' type="text" placeholder='Search' />
-                    <button className=''>
-                        <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style={{
+                </div>
+                <div className='my-auto flex flex-row w-[50%] h-[45px]'>
+
+                    <input className='rounded-[50px] rounded-r-none p-[20px] w-[80%] bg-transparent border-solid border-[1px] border-stone-700 border-r-0 ml-[10px] outline-none
+                    focus:border-blue-700 
+                    ' type="text" placeholder='Search' />
+
+                    <button className=' rounded-r-[50px] bg-zinc-800 shrink-0 outline-none w-[68px] border-solid border-[1px] border-stone-700 ' >
+                        <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        enableBackground="new 0 0 24 24" 
+                        height="24" viewBox="0 0 24 24" 
+                        width="24" 
+                        focusable="false" 
+                        style={{
                             pointerEvents: 'none', 
                             display: 'block', 
                             width: '100%', 
-                            height: '100%'
+                            height: '60%',
                         }}>
-                            <path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"></path>
+                            <path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill={theme.color}></path>
                         </svg>
+                        
+                    </button>
+                    <button className="w-[43px] mx-[auto] bg-neutral-800 rounded-[55%] p-[12px] hover:bg-neutral-700">
+                        <i className='bx bxs-microphone text-white text-[20px]  '></i>
                     </button>
                 </div>
+                {/* <div className="flex flex-row items-center h-[29px] gap-6 mr-[30px]">
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        height="24" 
+                        style={{
+                            pointerEvents: "none", 
+                            display: "block", 
+                            width: "27px", 
+                            height: "27px"
+                        }} 
+                        viewBox="0 0 24 24" 
+                        width="24" 
+                        focusable="false"
+                    >
+                        <path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-6.39l4 1.83V8.56l-4 1.83V6m1-1v3.83L22 7v8l-4-1.83V19H2V5h16z" fill={theme.color}></path>
+                    </svg>
+                    <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    enable-background="new 0 0 24 24" 
+                    height="24" viewBox="0 0 24 24" 
+                    width="24" focusable="false" 
+                    style={{
+                        pointerEvents: "none", 
+                        display: "block", 
+                        width: "27px", 
+                        height: "27px"
+                    }}
+                    >
+                    <path d="M10 20h4c0 1.1-.9 2-2 2s-2-.9-2-2zm10-2.65V19H4v-1.65l2-1.88v-5.15C6 7.4 7.56 5.1 10 4.34v-.38c0-1.42 1.49-2.5 2.99-1.76.65.32 1.01 1.03 1.01 1.76v.39c2.44.75 4 3.06 4 5.98v5.15l2 1.87zm-1 .42-2-1.88v-5.47c0-2.47-1.19-4.36-3.13-5.1-1.26-.53-2.64-.5-3.84.03C8.15 6.11 7 7.99 7 10.42v5.47l-2 1.88V18h14v-.23z" fill={theme.color}></path>
+                    </svg>
+                    <div className="bg-slate-400 p-2 rounded-[50%] ">
+                        <p className="text-white px-[7px]">G</p>
+                    </div>
+                </div> */}
+                <div className=" ml-[] flex flex-row w-[140px] justify-between gap-[30px] items-center">
+                    <div className="">
+                        <div className="bg-white h-[2.5px] w-[2px] rounded-full"></div>
+                        <div className="bg-white h-[2.5px] w-[2px] rounded-full mt-[5px] "></div>
+                        <div className="bg-white h-[2.5px] w-[2px] rounded-full mt-[4.5px]"></div>
+                    </div>
+                    <button className="rounded-full border-[1px] border-solid border-stone-700 w-[110px] flex flex-row items-center gap-3 p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="25px" height="25px"
+                    style={{
+                        border: '1px solid rgb(14, 156, 227)',
+                        borderRadius: '50%',
+                        padding: '0%', margin: '0%'
+                    }}
+                    >
+                        <path d="M 16 4 C 12.144531 4 9 7.144531 9 11 C 9 13.394531 10.21875 15.519531 12.0625 16.78125 C 8.484375 18.304688 6 21.859375 6 26 L 8 26 C 8 21.535156 11.535156 18 16 18 C 20.464844 18 24 21.535156 24 26 L 26 26 C 26 21.859375 23.515625 18.304688 19.9375 16.78125 C 21.78125 15.519531 23 13.394531 23 11 C 23 7.144531 19.855469 4 16 4 Z M 16 6 C 18.773438 6 21 8.226563 21 11 C 21 13.773438 18.773438 16 16 16 C 13.226563 16 11 13.773438 11 11 C 11 8.226563 13.226563 6 16 6 Z" fill="rgb(14, 156, 227)" />
+                        </svg>
+                        <p className="text-sky-500 font-semibold text-[16px] items-center mt-[-4px]">Sign in</p>
+                    </button>
+                </div>
+            
 			</nav>
 		</>
 	)
