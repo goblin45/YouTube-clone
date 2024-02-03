@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../contexts/UserState"
+import DrawerComp from './DrawerComp'
+import DrawerCompRegular from "./DrawerCompRegular"
 
-const NavBar = () => {
+const NavBar = ({isDrawerOpen, setIsDrawerOpen}) => {
 
     const userContext = useContext(UserContext)
     const [ theme, setTheme ] = useState({})
@@ -9,12 +11,17 @@ const NavBar = () => {
         setTheme(userContext.colorTheme)
     }, [userContext.colorTheme])
 
+    const handleDrawerToggle = () => {
+        setIsDrawerOpen( open => !open)
+    }
+
+    
     
     return (
 		<>
 			<nav className='w-screen min-w-xl h-[60px] flex flex-row items-center px-4 py-1 md:px-5 gap-[13%]'>
                 <div className="flex flex-row items-center ">
-                <div className='py-[15px] mx-[10px] hover:bg-neutral-700 hover:rounded-full'>
+                <div className='py-4 px-[13px] hover:bg-neutral-700 hover:rounded-full cursor-pointer' onClick={handleDrawerToggle}>
                     <div className="flex h-[1px] bg-white w-[20px] "></div>
                     <div className="flex h-[1px] bg-white w-[20px] mt-[5.5px]"></div>
                     <div className="flex h-[1px] bg-white w-[20px] mt-[5px]"></div>
@@ -46,10 +53,10 @@ const NavBar = () => {
                     
                 </div>
                 </div>
-                <div className='my-auto flex flex-row w-[50%] h-[45px]'>
+                <div className='my-auto flex flex-row w-[50%] min-w-[160px] h-[45px]'>
 
                     <input className='rounded-[50px] rounded-r-none p-[20px] w-[80%] bg-transparent border-solid border-[1px] border-stone-700 border-r-0 ml-[10px] outline-none
-                    focus:border-blue-700 
+                    focus:border-blue-700 text-white
                     ' type="text" placeholder='Search' />
 
                     <button className=' rounded-r-[50px] bg-zinc-800 shrink-0 outline-none w-[68px] border-solid border-[1px] border-stone-700 ' >
@@ -69,11 +76,14 @@ const NavBar = () => {
                         </svg>
                         
                     </button>
-                    <button className="w-[43px] mx-[auto] bg-neutral-800 rounded-[55%] p-[12px] hover:bg-neutral-700">
+                    <button className="w-[43px] ml-[1rem] bg-neutral-800 rounded-[55%] p-[12px] hover:bg-neutral-700">
                         <i className='bx bxs-microphone text-white text-[20px]  '></i>
                     </button>
                 </div>
-                {/* <div className="flex flex-row items-center h-[29px] gap-6 mr-[30px]">
+
+                {userContext.loggedIn ? 
+                    <div className="flex flex-row items-center h-[29px] gap-6 mr-[30px]" 
+                >
                     <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         height="24" 
@@ -106,8 +116,10 @@ const NavBar = () => {
                     <div className="bg-slate-400 p-2 rounded-[50%] ">
                         <p className="text-white px-[7px]">G</p>
                     </div>
-                </div> */}
-                <div className=" ml-[] flex flex-row w-[140px] justify-between gap-[30px] items-center">
+                </div> : 
+                <div className=" ml-[] flex flex-row w-[140px] justify-between gap-[30px] items-center" onClick={()=>{
+                    userContext.logInUser();
+                }}>
                     <div className="">
                         <div className="bg-white h-[2.5px] w-[2px] rounded-full"></div>
                         <div className="bg-white h-[2.5px] w-[2px] rounded-full mt-[5px] "></div>
@@ -126,8 +138,16 @@ const NavBar = () => {
                         <p className="text-sky-500 font-semibold text-[16px] items-center mt-[-4px]">Sign in</p>
                     </button>
                 </div>
-            
+                }
+
+        
+
+
+                
 			</nav>
+
+
+            
 		</>
 	)
 }
