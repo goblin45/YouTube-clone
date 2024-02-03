@@ -9,6 +9,8 @@ import {Routes, Route} from 'react-router-dom'
 
 function App() {
 
+    const [isDrawerOpen, setIsDrawerOpen] = useState(true);
+
 	const userContext = useContext(UserContext) 
     const [colorReloadingBool, setColorReloadingBool] = useState(true)
     useEffect(() => {
@@ -22,7 +24,10 @@ function App() {
 		<div className='App'>
 			<Routes>
 				<Route path='/' element={<PlayButton/>} /> 
-				<Route path='/home' element={<Home/>} /> 
+				<Route path='/home' element={<Home
+                    isDrawerOpen = {isDrawerOpen}
+                    setIsDrawerOpen = {setIsDrawerOpen}
+                />} /> 
 			</Routes>
 		</div>
     )
