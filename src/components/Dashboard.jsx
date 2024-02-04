@@ -46,7 +46,7 @@ function Dashboard() {
 					data?.map((video) => (
 					
 					<div key={video.id.videoId} className='text-white color flex flex-col gap-3'>
-						<div className=''>
+						<div className='hover:cursor-pointer'>
 							<img src={video.snippet.thumbnails.high.url} alt="" className='h-56'/>
 						</div>
 						<div className='flex flex-col gap-3'>
