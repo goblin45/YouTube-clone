@@ -4,10 +4,7 @@ import axios from 'axios'
 const API_key = "AIzaSyD-q58ZlTfke8tsH6LsSpIpTnX0kTcGuJQ";
 // const API_key = "AIzaSyDIla3-X_K72wxCrwCdAc1Ot8vszIYjHSo"
 const videoSearchURL = `https://youtube.googleapis.com/youtube/v3/search?key=${API_key}`
-
 const channelDpURL = `https://youtube.googleapis.com/youtube/v3/channels?key=${API_key}`
-	
-
 
 function Dashboard() {
 
@@ -26,15 +23,12 @@ function Dashboard() {
 		))
 	}
 
-	useEffect(async() => {
+	useEffect(() => {
 		const videoParams = new URLSearchParams({
 			part: 'snippet',
 			maxResults: '2'
 		})
-
-		// console.log(videoParams);
-
-		await fetch(`${videoSearchURL}&${videoParams}`).then((res) => res.json()).then((resJson) => setData(resJson.items));
+		fetch(`${videoSearchURL}&${videoParams}`).then((res) => res.json()).then((resJson) => setData(resJson.items));
 	}, [])
 
 	useEffect(() => {
